@@ -23,6 +23,7 @@ io.on('connection', function(socket) {
 	})
 
 	socket.emit('message', {
+		name: "System",
 		text: "Welcome to chat app",
 		ts: moment().valueOf()
 	});
