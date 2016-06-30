@@ -5,9 +5,17 @@ console.log(name + ' entered room ' + room);
 
 var socket = io();
 
+jQuery("#roomName").text(room);
+
 
 socket.on('connect', function() {
 	console.log('connected to socket io server');
+
+
+	socket.emit('joinRoom', {
+		name: name,
+		room: room
+	});
 });
 
 socket.on('message', function(message) {
