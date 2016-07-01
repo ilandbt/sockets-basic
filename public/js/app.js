@@ -21,11 +21,14 @@ socket.on('connect', function() {
 socket.on('message', function(message) {
 	var momentTs = moment.utc(message.ts);;
 	var $messages = jQuery('.messages');
+	var $message = jQuery('<li class="list-group-item"></li>');
 	console.log('new message');
 	console.log(message.text);
 
-	$messages.append('<p><string>' + message.name + ' ' + momentTs.local().format('h:mm a') + '</strong></p>');
-	$messages.append('<p>' + message.text + '</p>');
+	$message.append('<p><string>' + message.name + ' ' + momentTs.local().format('h:mm a') + '</strong></p>');
+	$message.append('<p>' + message.text + '</p>');
+
+	$messages.append($message);
 });
 
 
